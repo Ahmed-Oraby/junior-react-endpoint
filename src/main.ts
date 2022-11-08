@@ -4,10 +4,12 @@ import typeDefs from './schema';
 import resolvers from './resolvers';
 
 const server = new ApolloServer({
-    typeDefs: typeDefs,
-    resolvers: resolvers
+	typeDefs: typeDefs,
+	resolvers: resolvers,
 });
 
-server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
+const port = Number.parseInt(process.env.PORT) || 4000;
+
+server.listen({ port: port }).then(({ url }) => {
+	console.log(`🚀  Server ready at ${url}`);
 });
